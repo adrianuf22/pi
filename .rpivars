@@ -1,0 +1,2 @@
+PROMPT_PI='%{$fg[yellow]%}On PI%{$reset_color%}'
+PROMPT=$PROMPT_PI" "$PROMPT
