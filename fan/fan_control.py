@@ -1,8 +1,9 @@
 #! /usr/bin/python3
 
-from gpiozero import OutputDevice, CPUTemperature
 import time
-import lcddriver
+from gpiozero import OutputDevice, CPUTemperature
+
+from i2c.print_msg import print_msg
 
 cpu = CPUTemperature()
 
@@ -11,11 +12,8 @@ cpu_stable_temp = 45
 
 fan = OutputDevice(17)
 
-display = lcddriver.lcd()
-display.lcd_clear()
-
 while True:
-    display.lcd_display_string("{} {}".format("CPU", cpu.temperature), 1)
+    print_msg("{} {}".format("CPU", cpu.temperature))
     
     if cpu.temperature >= cpu_threshold_temp:
         fan.on()
